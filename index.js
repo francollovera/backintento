@@ -7,12 +7,11 @@ dotenv.config();
 import { MercadoPagoConfig, Preference } from "mercadopago";
 // Agrega credenciales
 const client = new MercadoPagoConfig({
-  accessToken: "APP_USR-8756355838713146-090922-92a14ee2d300c1ef80751bfac4bf6a23-23016067",
+  accessToken: process.env.ACCESS_TOKEN, // Usa una variable de entorno para el accessToken
 });
 
 const app = express();
-const port = 3000;
-
+const port = process.env.PORT || 3000; // Usa una variable de entorno para el puerto
 
 app.use(cors());
 app.use(express.json());
