@@ -1,17 +1,15 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
-dotenv.config();
 
 // SDK de Mercado Pago
 import { MercadoPagoConfig, Preference } from "mercadopago";
 // Agrega credenciales
 const client = new MercadoPagoConfig({
-  accessToken: process.env.ACCESS_TOKEN, // Usa una variable de entorno para el accessToken
+  accessToken: "APP_USR-8756355838713146-090922-92a14ee2d300c1ef80751bfac4bf6a23-23016067",
 });
 
 const app = express();
-const port = process.env.PORT || 3000; // Usa una variable de entorno para el puerto
+const port = 3000;
 
 app.use(cors());
 app.use(express.json());
@@ -20,9 +18,7 @@ app.get("/", (req, res) => {
   res.send("Soy el server :)");
 });
 
-
 app.post("/create_preference", async (req, res) => {
-  console.log("Cuerpo recibido:", req.body);
   try {
     const body = {
       items: [
@@ -34,9 +30,9 @@ app.post("/create_preference", async (req, res) => {
         },
       ],
       back_urls: {
-        success: "https://florafront1.vercel.app/",
-        failure: "https://florafront1.vercel.app/",
-        pending: "https://florafront1.vercel.app/",
+        success: "https://www.youtube.com/@onthecode",
+        failure: "https://www.youtube.com/@onthecode",
+        pending: "https://www.youtube.com/@onthecode",
       },
       auto_return: "approved",
     };
